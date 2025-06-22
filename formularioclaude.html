@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Formulário de Treino</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      background-color: #1e1e1e; 
+      color: white; 
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    .container { 
+      max-width: 800px; 
+      margin: 0 auto; 
+      padding: 40px 20px; 
+    }
+    .step { display: none; }
+    .step.active { display: block; }
+    
+    h2 { text-align: center; margin-bottom: 30px; color: #00ff99; }
+    h4 { margin-bottom: 20px; color: #fff; }
+    
+    .form-label { 
+      display: block; 
+      margin-bottom: 8px; 
+      font-weight: bold; 
+    }
+    .form-control, .form-select { 
+      width: 100%; 
+      padding: 12px; 
+      border: 1px solid #555; 
+      border-radius: 6px; 
+      background: #333; 
+      color: white; 
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .form-control:focus, .form-select:focus {
+      outline: none;
+      border-color: #00ff99;
+      box-shadow: 0 0 5px rgba(0, 255, 153, 0.3);
+    }
+    
+    .mb-3 { margin-bottom: 20px; }
+    
+    input[type="radio"], input[type="checkbox"] { 
+      margin-right: 8px; 
+      transform: scale(1.2);
+    }
+    label { 
+      margin-bottom: 10px; 
+      display: block; 
+      cursor: pointer;
+    }
+    
+    .btn { 
+      padding: 12px 24px; 
+      border: none; 
+      border-radius: 6px; 
+      cursor: pointer; 
+      font-size: 16px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+    .btn-success { 
+      background: #28a745; 
+      color: white; 
+    }
+    .btn-success:hover { 
+      background: #218838; 
+    }
+    .btn-secondary { 
+      background: #6c757d; 
+      color: white; 
+    }
+    .btn-secondary:hover { 
+      background: #5a6268; 
+    }
+    .btn-primary { 
+      background: #007bff; 
+      color: white; 
+    }
+    .btn-primary:hover { 
+      background: #0056b3; 
+    }
+    .btn-outline-light { 
+      background: transparent; 
+      border: 1px solid #fff; 
+      color: white; 
+    }
+    .btn-outline-light:hover { 
+      background: #fff; 
+      color: #333; 
+    }
+    .btn-sm { 
+      padding: 8px 16px; 
+      font-size: 14px; 
+    }
+    
+    .pix-box { 
+      background: #333; 
+      padding: 25px; 
+      border-radius: 10px; 
+      margin: 25px 0; 
+      border: 2px solid #00ff99;
+    }
+    .pix-key { 
+      font-size: 18px; 
+      font-weight: bold; 
+      color: #0f0; 
+      background: #222;
+      padding: 10px;
+      border-radius: 5px;
+      font-family: monospace;
+    }
+    .pix-value { 
+      font-size: 28px; 
+      font-weight: bold; 
+      color: #00ff99; 
+      margin-bottom: 15px; 
+    }
+    
+    .d-flex { 
+      display: flex; 
+    }
+    .align-items-center { 
+      align-items: center; 
+    }
+    .me-3 { 
+      margin-right: 15px; 
+    }
+    .mb-2 { 
+      margin-bottom: 10px; 
+    }
+    .text-center { 
+      text-align: center; 
+    }
+    .mb-4 { 
+      margin-bottom: 30px; 
+    }
+    
+    a { 
+      color: inherit; 
+      text-decoration: none; 
+    }
+    a.btn:hover { 
+      text-decoration: none; 
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <h2 class="text-center mb-4">Formulário de Treino Personalizado</h2>
+
+    <form id="formulario" action="https://script.google.com/macros/s/AKfycbyFWt76Vuyb9jsOMYF66d8Vf3iucTH-egoe4YXNWkKub2Ousea76Kmkbw1IwDlNilSO/exec" method="POST">
+      <!-- ETAPA 1 -->
+      <div class="step" id="step1">
+        <h4>Vamos começar!</h4>
+        <div class="mb-3">
+          <label class="form-label">Você já treina musculação?</label><br />
+          <input type="radio" name="musculacao" value="Sim" required /> Sim
+          <input type="radio" name="musculacao" value="Não" /> Não
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Há quanto tempo você treina?</label>
+          <select class="form-select" name="tempoTreino" required>
+            <option value="">Selecione...</option>
+            <option>Nenhum</option>
+            <option>3 a 6 meses</option>
+            <option>6 meses a 1 ano</option>
+            <option>Mais de um 1 ano</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-success" onclick="nextStep()">Próxima</button>
+      </div>
+
+      <!-- ETAPA 2 -->
+      <div class="step" id="step2">
+        <h4>Estamos quase lá!</h4>
+        <div class="mb-3">
+          <label class="form-label">Quantas vezes você treina por semana?</label>
+          <select class="form-select" name="frequencia" required>
+            <option value="">Selecione...</option>
+            <option>Nenhuma</option>
+            <option>3x</option>
+            <option>4x</option>
+            <option>5x</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="prevStep()">Voltar</button>
+        <button type="button" class="btn btn-success" onclick="nextStep()">Próxima</button>
+      </div>
+
+      <!-- ETAPA 3 -->
+      <div class="step" id="step3">
+        <h4>Última pergunta sobre seu treino:</h4>
+        <div class="mb-3">
+          <label class="form-label">Você já teve resultados significativos na academia?</label><br />
+          <input type="radio" name="resultados" value="Sim" required /> Sim
+          <input type="radio" name="resultados" value="Não" /> Não
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Você sente que está estagnada(o) nos resultados?</label><br />
+          <input type="radio" name="estagnado" value="Sim" required /> Sim
+          <input type="radio" name="estagnado" value="Não" /> Não
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="prevStep()">Voltar</button>
+        <button type="button" class="btn btn-success" onclick="nextStep()">Próxima</button>
+      </div>
+
+      <!-- ETAPA 4 -->
+      <div class="step" id="step4">
+        <h4>Escolha até DOIS grupamentos musculares prioritários:</h4>
+        <div class="mb-3">
+          <label><input type="checkbox" name="grupamentos" value="Posteriores de coxa" /> Posteriores de coxa</label><br />
+          <label><input type="checkbox" name="grupamentos" value="Quadríceps" /> Quadríceps</label><br />
+          <label><input type="checkbox" name="grupamentos" value="Glúteos" /> Glúteos</label><br />
+          <label><input type="checkbox" name="grupamentos" value="Superiores" /> Superiores</label>
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="prevStep()">Voltar</button>
+        <button type="button" class="btn btn-success" onclick="nextStep()">Próxima</button>
+      </div>
+
+      <!-- ETAPA 5 -->
+      <div class="step" id="step5">
+        <h4>Agora, finalize com seus dados:</h4>
+        <div class="mb-3">
+          <label class="form-label">Seu nome completo:</label>
+          <input type="text" class="form-control" name="nome" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">E-mail:</label>
+          <input type="email" class="form-control" name="email" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">WhatsApp (com DDD):</label>
+          <input type="tel" class="form-control" name="telefone" required />
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="prevStep()">Voltar</button>
+        <button type="button" class="btn btn-primary" onclick="enviarFormulario()">Enviar</button>
+      </div>
+
+      <!-- ETAPA 6 - PIX -->
+      <div class="step" id="step6">
+        <h4 class="mb-3">✅ Formulário enviado com sucesso!</h4>
+        <div class="pix-box">
+          <p class="pix-value">💰 Valor: R$ 49,90</p>
+          <p class="mb-2">💳 Chave PIX:</p>
+          <div class="d-flex align-items-center">
+            <span class="pix-key me-3" id="pixKey">10520855981</span>
+            <button class="btn btn-outline-light btn-sm" type="button" onclick="copiarPix()">Copiar</button>
+          </div>
+        </div>
+        <a href="http://wa.me/5541988644970" target="_blank" class="btn btn-success">Enviar comprovante no WhatsApp</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+  let currentStep = 0;
+  const steps = document.querySelectorAll(".step");
+
+  function showStep(index) {
+    steps.forEach((step, i) => {
+      step.classList.toggle("active", i === index);
+    });
+  }
+
+  function nextStep() {
+    if (currentStep < steps.length - 1) {
+      currentStep++;
+      showStep(currentStep);
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    showStep(currentStep);
+  });
+
+  // ✅ Limitar a 2 checkboxes
+  document.querySelectorAll("input[name='grupamentos']").forEach((el) => {
+    el.addEventListener("change", () => {
+      const checked = document.querySelectorAll("input[name='grupamentos']:checked");
+      if (checked.length > 2) {
+        el.checked = false;
+        alert("Você pode selecionar no máximo DOIS grupamentos.");
+      }
+    });
+  });
+
+  // Função para enviar ao Google Sheets
+  function enviarFormulario() {
+    const submitBtn = document.querySelector("button[onclick='enviarFormulario()']");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Enviando...";
+    
+    // Verificar grupamentos
+    const checkboxes = document.querySelectorAll("input[name='grupamentos']:checked");
+    
+    if (checkboxes.length === 0) {
+      alert("Selecione pelo menos um grupamento!");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Enviar";
+      return;
+    }
+    
+    // Preparar dados como objeto simples
+    const selectedValues = Array.from(checkboxes).map(cb => cb.value);
+    const dados = {
+      musculacao: document.querySelector('input[name="musculacao"]:checked')?.value || '',
+      tempoTreino: document.querySelector('select[name="tempoTreino"]')?.value || '',
+      frequencia: document.querySelector('select[name="frequencia"]')?.value || '',
+      resultados: document.querySelector('input[name="resultados"]:checked')?.value || '',
+      estagnado: document.querySelector('input[name="estagnado"]:checked')?.value || '',
+      grupamentos: selectedValues.join(", "),
+      nome: document.querySelector('input[name="nome"]')?.value || '',
+      email: document.querySelector('input[name="email"]')?.value || '',
+      telefone: document.querySelector('input[name="telefone"]')?.value || ''
+    };
+    
+    console.log("Enviando dados:", dados);
+    
+    // Criar formulário temporário para envio
+    const tempForm = document.createElement('form');
+    tempForm.method = 'POST';
+    tempForm.action = 'https://script.google.com/macros/s/AKfycbyFWt76Vuyb9jsOMYF66d8Vf3iucTH-egoe4YXNWkKub2Ousea76Kmkbw1IwDlNilSO/exec';
+    tempForm.target = '_blank';
+    
+    // Adicionar campos ao formulário temporário
+    Object.keys(dados).forEach(key => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = dados[key];
+      tempForm.appendChild(input);
+    });
+    
+    // Adicionar ao DOM e enviar
+    document.body.appendChild(tempForm);
+    tempForm.submit();
+    document.body.removeChild(tempForm);
+    
+    // Avançar para próxima etapa após breve delay
+    setTimeout(() => {
+      currentStep++;
+      showStep(currentStep);
+    }, 1500);
+  }
+
+
+
+  function copiarPix() {
+    const chave = document.getElementById("pixKey").innerText;
+    navigator.clipboard.writeText(chave).then(() => {
+      alert("Chave PIX copiada!");
+    });
+  }
+</script>
+</body>
+</html>
